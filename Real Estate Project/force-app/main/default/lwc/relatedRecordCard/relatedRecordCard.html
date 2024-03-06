@@ -1,0 +1,7 @@
+<template>
+  <lightning-card>
+    <template for:each={fieldSet} for:item="fieldApiName">
+      <p key={fieldApiName}>{getFieldValue(record, fieldApiName)}</p>
+    </template>
+  </lightning-card>
+</template>

@@ -1,0 +1,46 @@
+<template>
+  <lightning-card title="Sales Office Properties" icon-name="standard:agent_home">
+    <!-- Display the selected property count -->
+    <div class="slds-m-around_medium">
+      <p>No of Properties Claimed: {claimedPropertiesCount}</p>
+    </div>
+
+    <lightning-layout horizontal-align="center" class="slds-m-top_small">
+      <lightning-layout-item>
+        <div class="slds-m-right_small">
+          <lightning-button label="Claim Properties" variant="brand-outline"
+            onclick={handleClaimProperties}></lightning-button>
+        </div>
+      </lightning-layout-item>
+      <lightning-layout-item>
+        <div class="slds-m-right_small">
+          <lightning-button label="Claim and Continue" variant="brand-outline"
+            onclick={handleClaimContinueProperties}></lightning-button>
+        </div>
+      </lightning-layout-item>
+      <lightning-layout-item>
+        <lightning-button label="Cancel" variant="brand-outline" onclick={handleCancelProperties}></lightning-button>
+      </lightning-layout-item>
+    </lightning-layout>
+
+    <!--Datatable for Sales Office Properties-->
+    <div class="slds-m-around_medium">
+      <lightning-datatable key-field="Id" data={data} columns={columns} onsave={handleSave}
+      draft-values={draftValues} onrowselection={handleSelectedRow}
+        onrowaction={handleRowAction}>
+      </lightning-datatable>
+    </div>
+
+    <!--  Pagination Buttons Start -->
+    <div class="slds-align_absolute-center slds-m-top_small">
+      <lightning-button label="Previous" icon-name="utility:chevronleft" onclick={previousHandler}
+        disabled={isPreviousDisable}></lightning-button>
+      <span class="slds-badge slds-badge_lightest">
+        Displaying {startingRecord} to {endingRecord} of {totalRecountCount} records. Page {page} of {totalPage}.
+      </span>
+      <lightning-button label="Next" icon-name="utility:chevronright" icon-position="right" onclick={nextHandler}
+        disabled={isNextDisable}></lightning-button>
+    </div>
+    <!--  Pagination Buttons End -->
+  </lightning-card>
+</template>

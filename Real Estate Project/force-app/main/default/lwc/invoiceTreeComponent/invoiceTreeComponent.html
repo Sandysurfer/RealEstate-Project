@@ -1,0 +1,40 @@
+<template>
+  <lightning-card title="Invoice Tree">
+    <template if:true={invoices}>
+      <ul>
+        <template for:each={invoices} for:item="invoice">
+          <li key={invoice.Id}>
+            <div
+              class="invoice"
+                            onclick={handleInvoiceClick}
+data-id={invoice.Id}
+            >
+              {invoice.Name}
+            </div>
+            <template if:true={invoice.Id}>
+              <ul>
+                <template for:each={invoice.Id} for:item="lineItem">
+                  <li key={lineItem.Id}>
+                    <div class="line-item">{lineItem.Name}</div>
+                  </li>
+                </template>
+                <template if:true={loadMore}>
+                  <li key={loadMore.Id}>
+                    <div
+                      class="load-more"
+                      data-id={invoice.Id}
+                      onclick={loadMoreLineItems}
+data-id={invoice.Id}
+                    >
+                      View More
+                    </div>
+                  </li>
+                </template>
+              </ul>
+            </template>
+          </li>
+        </template>
+      </ul>
+    </template>
+  </lightning-card>
+</template>

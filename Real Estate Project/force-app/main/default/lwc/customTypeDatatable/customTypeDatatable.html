@@ -1,0 +1,41 @@
+<template>
+    <lightning-card title="Account Records" icon-name="standard:account">
+        <lightning-layout>
+          <lightning-layout-item size="4">
+            <lightning-combobox
+              label="Record Type"
+              value={selectedRecordType}
+              options={recordTypeOptions}
+              onchange={handleRecordTypeChange}
+            ></lightning-combobox>
+          </lightning-layout-item>
+          <lightning-layout-item size="4">
+            <lightning-combobox
+              label="Picklist Field"
+              value={selectedPicklistField}
+              options={picklistFieldOptions}
+              onchange={handlePicklistFieldChange}
+            ></lightning-combobox>
+          </lightning-layout-item>
+          <lightning-layout-item size="4">
+            <lightning-combobox
+              label="Picklist Values"
+              value={selectedPicklistValue}
+              options={picklistValueOptions}
+              onchange={handlePicklistValueChange}
+            ></lightning-combobox>
+          </lightning-layout-item>
+        </lightning-layout>
+      
+  
+      <!-- <div class="slds-m-around_medium">
+        <lightning-datatable
+          key-field="Id"
+          data={filteredData}
+          columns={columns}
+          hide-checkbox-column="true"
+        >
+        </lightning-datatable> -->
+      </div>
+    </lightning-card>
+  </template>

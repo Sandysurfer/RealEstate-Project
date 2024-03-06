@@ -1,0 +1,22 @@
+<template>
+  <lightning-card title="Related Records">
+    <template if:true={relatedRecords}>
+      <template for:each={relatedRecords} for:item="record">
+        <c-related-record-card
+          key={record.Id}
+          record={record}
+          field-set={fieldSet}
+        ></c-related-record-card>
+      </template>
+    </template>
+    <template if:true={error}>
+      <p>Error fetching related records: {error}</p>
+    </template>
+    <template if:true={isLoading}>
+      <lightning-spinner
+        alternative-text="Loading"
+        size="medium"
+      ></lightning-spinner>
+    </template>
+  </lightning-card>
+</template>
